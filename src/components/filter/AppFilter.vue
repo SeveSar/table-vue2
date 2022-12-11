@@ -59,6 +59,7 @@ export default {
       const { filterNumber, filterType } = filtersObject;
       this.filter = filterNumber;
       this.select = filterType;
+      console.log(this.select, 'SELECT');
     },
   },
   methods: {

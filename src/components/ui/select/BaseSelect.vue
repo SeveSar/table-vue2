@@ -1,5 +1,10 @@
 <template>
-  <div class="custom-select" :class="type" :tabindex="tabindex" @blur="open = false">
+  <div
+    class="custom-select"
+    :class="[type, { active: active.value }]"
+    :tabindex="tabindex"
+    @blur="open = false"
+  >
     <div class="selected" :class="{ open: open }" @click="open = !open">
       {{ selected?.text }}
       <AppIcon name="IconArrowDown" />
@@ -50,6 +55,11 @@ export default {
       open: false,
     };
   },
+  watch: {
+    active(value) {
+      this.selected = value;
+    },
+  },
   methods: {
     setSelectValue(option) {
       this.selected = option;
@@ -75,6 +85,11 @@ export default {
     .selected {
       color: $black-color;
       font-weight: 700;
+    }
+  }
+  &.active {
+    .selected {
+      color: $black-color;
     }
   }
 }
